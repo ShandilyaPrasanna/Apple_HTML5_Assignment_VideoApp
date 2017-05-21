@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ <style type="text/css">
+ 	
+.main{
+ width:80%;
+  margin:auto;
+}
+ ul {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+       overflow: hidden;
+       background-color: white;
+
+   }
+
+   li {
+       float: right;
+   }
+
+   li a {
+       display: inline-block;
+       color: grey;
+       text-align: center;
+       padding: 14px 16px;
+       text-decoration: none;
+     }
+   
+
+   li a:hover {
+       background-color: lightblue;
+   }
+.logo{
+	float: left;
+}
+  #playpausebtn
+{
+	background-color:blue;
+    border: none;
+    color: white;
+    padding: 15px 250px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 12px;
+}
+.date{
+float: right;
+margin-right: 15px;
+       padding: 0;
+}
+ </style>
+
+
+
+
+</head>
+<body>
+<div class="main">
+<div class="date">
+               Today :
+                <font id="date" color="grey"></font>
+               
+            </div>>
+<div class="col1">
+<ul>
+  <li><a class="active " href="#My Account ">My Account</a></li>
+  <li><a href="#contact ">Contact</a></li>
+  <li><a href="#join us ">Join Us</a></li>
+  <li><a href="travel.html">Home</a></li>
+  <li><a href="about.html">About Us</a></li>
+  <a class="logo" href="video_prjt.html"><img src="data/logo.png" alt="your logo"></a>  
+</ul>
+
+</div>
+<br>
+
+<center>
+<h1>Video Of The Week</h1>
+
+<div class="video">
+<video id="my_video" width="550" height="300" autoplay >
+    <source src="data/demo.mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+<div id="video_control">
+<br>
+    <button id="playpausebtn" onclick="playPause(this,'my_video')">Pause</button>
+  </div>
+</center>
+</div>
+
+
+
+
+
+
+</div>
+</body>
+<script>
+var today = new Date();
+var date = new Date(today.getTime());
+var fdate=date.toDateString();
+document.getElementById("date").innerHTML = fdate;
+function playPause(btn,vid){
+	var vid = document.getElementById(vid);
+	if(vid.paused){
+		vid.play();
+		btn.innerHTML = "Pause";
+	} else {
+		vid.pause();
+		btn.innerHTML = "Play";
+	}
+}
+
+</script>
+</html>
