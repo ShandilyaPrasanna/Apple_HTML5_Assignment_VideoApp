@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+		<style type="text/css">
+		.ul_header {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+       overflow: hidden;
+       background-color: white;
+
+   }
+
+   .li_header {
+       float: right;
+   }
+
+ a {
+       display: inline-block;
+       color: grey;
+       text-align: center;
+       padding: 14px 16px;
+       text-decoration: none;
+       background-color: white;
+     }
+
+
+    a:hover {
+    background-color:lightblue;
+   }
+.logo{
+	float: left;
+}
+.date{
+float: right;
+margin-right: 15px;
+       padding: 0;
+}
+.main{
+ width:90%;
+  margin:auto;
+}
+	</style>
+</head>
+<body>
+<div class="main">
+<div class="date">
+               Today :
+                <font id="date" color="grey"></font>
+
+            </div>
+            <br>
+<div class="col1">
+<ul class="ul_header">
+  <li class="li_header"><a class="active " href="contact.html ">contact Us</a></li>
+  <li class="li_header"><a href="MyVideoRequest.html ">My Request</a></li>
+  <li class="li_header"><a href="join.html ">Join Us</a></li>
+  <li class="li_header"><a href="../video_prjt.html">Home</a></li>
+  <li class="li_header"><a href="about.html">About Us</a></li>
+  <a class="logo" href="../video_prjt.html"><img src="../data/logo.png" alt="your logo"></a>
+</ul>
+
+</div>
+<h1>Join Us -</h1>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</p>
+</div>
+</body>
+<script>
+var today = new Date();
+var date = new Date(today.getTime());
+var fdate=date.toDateString();
+document.getElementById("date").innerHTML = fdate;
+</script>
+</html>

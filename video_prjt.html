@@ -3,12 +3,12 @@
 
 <head>
  <style type="text/css">
- 	
+
 .main{
- width:80%;
+ width:90%;
   margin:auto;
 }
- ul {
+ .ul_header {
        list-style-type: none;
        margin: 0;
        padding: 0;
@@ -17,31 +17,31 @@
 
    }
 
-   li {
+   .li_header {
        float: right;
    }
 
-   li a {
+ a {
        display: inline-block;
        color: grey;
        text-align: center;
        padding: 14px 16px;
        text-decoration: none;
+       background-color: white;
      }
-   
 
-   li a:hover {
-       background-color: lightblue;
+
+    a:hover {
+    background-color:lightblue;
    }
 .logo{
 	float: left;
 }
-  #playpausebtn
-{
+  #playpausebtn{
 	background-color:blue;
     border: none;
     color: white;
-    padding: 15px 250px;
+    padding: 5% 80%;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -53,6 +53,55 @@ float: right;
 margin-right: 15px;
        padding: 0;
 }
+
+
+
+form li {
+list-style: none;
+margin-bottom: 5px;
+}
+
+form ul li label{
+float: left;
+clear: left;
+width: 30%;
+text-align: right;
+margin-right: 10px;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:14px;
+}
+
+form ul li input, select, span {
+
+margin-bottom: 10px;
+}
+input[type="text"] {
+    width: 50%;
+}
+form textarea {
+float: left;
+height: 50%;
+width: 50%;
+}
+
+[type="submit"] {
+color:blue;
+
+font-size:18px;
+}
+.video{
+  float:left;
+  width:30%;
+}
+
+.div_form{
+  margin-top: 77px;
+  float:right;
+  width:40%;
+  background-color: grey;
+}
+
+
  </style>
 
 
@@ -64,26 +113,25 @@ margin-right: 15px;
 <div class="date">
                Today :
                 <font id="date" color="grey"></font>
-               
-            </div>>
+
+            </div>
+            <br>
 <div class="col1">
-<ul>
-  <li><a class="active " href="#My Account ">My Account</a></li>
-  <li><a href="#contact ">Contact</a></li>
-  <li><a href="#join us ">Join Us</a></li>
-  <li><a href="travel.html">Home</a></li>
-  <li><a href="about.html">About Us</a></li>
-  <a class="logo" href="video_prjt.html"><img src="data/logo.png" alt="your logo"></a>  
+<ul class="ul_header">
+  <li class="li_header"><a class="active " href="file/contact.html ">contact Us</a></li>
+  <li class="li_header"><a href="file/MyVideoRequest.html ">My Request</a></li>
+  <li class="li_header"><a href="file/join.html ">Join Us</a></li>
+  <li class="li_header"><a href="video_prjt.html">Home</a></li>
+  <li class="li_header"><a href="file/about.html">About Us</a></li>
+  <a class="logo" href="video_prjt.html"><img src="data/logo.png" alt="your logo"></a>
 </ul>
 
 </div>
-<br>
-
+<div class="video">
 <center>
 <h1>Video Of The Week</h1>
-
-<div class="video">
-<video id="my_video" width="550" height="300" autoplay >
+<div >
+<video id="my_video" width="175%" height="300" autoplay >
     <source src="data/demo.mp4">
     Your browser does not support the video tag.
   </video>
@@ -95,13 +143,53 @@ margin-right: 15px;
 </center>
 </div>
 
+<div class="div_form">
+  <center>
+<h1>Enter Video Details</h1>
+<p>Goto <b>My Request</b> for viewing your request</p>
 
 
+<form name='video_detail' onsubmit="return validateForm()" method="post">
+<ul>
+<li><label>First Name:</label></li>
+<li><input type="text" name="firstName" size="12" /></li>
+<li><p id="firstName" style="color:red;"></p></li>
+<li><label>Last Name:</label></li>
+<li><input type="text" name="lastName" size="12" /></li>
+<p id="lastName" style="color:red;"></p>
+<li><label >Email:</label></li>
+<li><input type="text" name="email" size="50" /></li>
+<p id="email" style="color:red;"></p>
+<li><label >City:</label>
+<select name="city">
+    <option value="Banglore">Banglore</option>
+    <option value="Hydrabad">Hydrabad</option>
+    <option value="chennai">Chennai</option>
+    <option value="Kolkata">Kolkata</option>
+    <option value="Delhi">Delhi</option>
+    <option value="Mumbai">Mumbai</option>
+</select></li>
+<p id="city" style="color:red;"></p>
+<li><label >Age:</label></li>
+<li><input type="text" name="age" size="50" /></li>
+<p id="age" style="color:red;"></p>
+ <li><label>video Link:</label>
+ <input  type="text" name="vl" placeholder="Enter the Video link"></li>
+<p id="vl" style="color:red;"></p>
+<li><input type="submit" value="Submit"/></li>
+<p id="success" style="color:green;"></p>
 
-
-
+</ul>
+</form>
+</center>
+</div>
+</div>
 </div>
 </body>
+
+
+
+
 <script>
 var today = new Date();
 var date = new Date(today.getTime());
@@ -117,6 +205,143 @@ function playPause(btn,vid){
 		btn.innerHTML = "Play";
 	}
 }
+
+
+function validateForm() {
+    var fName=document.forms["video_detail"]["firstName"].value;
+    var lName=document.forms["video_detail"]["lastName"].value;
+    var eml=document.forms["video_detail"]["email"].value;
+    var cty=document.forms["video_detail"]["city"].value;
+    var a=document.forms["video_detail"]["age"].value;
+    var link=document.forms["video_detail"]["vl"].value;
+console.log(fName,lName,cty,eml,a,link);
+var fn=allLetter(fName,"firstName");
+var ln=allLetter(lName,"lastName");
+var em=ValidateEmail(eml,"email");
+var ag=numeric(a,"age");
+if(link=="")
+{
+
+	text="Filed cannot be Empty";
+	document.getElementById("vl").innerHTML = text;
+	 var v=false;
+}
+else{
+	text="";
+	document.getElementById("vl").innerHTML = text;
+var v=true;
+}
+if(fn && ln && em && ag)
+{
+	if (typeof(Storage) !== "undefined") {
+		localStorage.setItem("state", true);
+    localStorage.setItem("firstName", fName);
+    localStorage.setItem("lastName", lName);
+    localStorage.setItem("email", eml);
+    localStorage.setItem("city", cty);
+    localStorage.setItem("age", a);
+    localStorage.setItem("vl", link);
+    
+} 
+console.log("validform");
+	
+ }
+ else{
+ 	if (typeof(Storage) !== "undefined") {
+		localStorage.setItem("state", false);
+	}
+ 	console.log("invalidform");
+ 	document.getElementById("success").innerHTML ="";
+ 	return false;
+ }
+}
+
+
+
+
+
+function allLetter(data,name){
+{   
+var letters = /^[A-Za-z]+$/; 
+if(data=="")
+{
+
+	text="Filed cannot be Empty";
+	document.getElementById(name).innerHTML = text;
+	return false;
+}
+else{ 
+if((!data.match(letters)))  
+{  
+text=" must have alphabet characters only";  
+ document.getElementById(name).innerHTML = text;
+ return false;
+}  
+else{
+
+	text="";  
+ document.getElementById(name).innerHTML = text;
+	return true;
+}
+}  
+}
+};
+
+function numeric(data,name){
+var numbers = /^[0-9]+$/;  
+if(data=="")
+{
+	text="Filed cannot be Empty";
+	document.getElementById(name).innerHTML = text;
+	return false;
+}
+else{ 
+if(!(data.match(numbers)))  
+{  
+text=" must have Numeric characters only";  
+ document.getElementById(name).innerHTML = text;
+ return false;
+}  
+else{
+	if(data<121&&data>17){
+		text="";  
+ document.getElementById(name).innerHTML = text;
+		return true;
+
+	}
+	else{
+		text=" must be in the Range 18-120";  
+ document.getElementById(name).innerHTML = text;
+		
+	}
+}
+}
+};
+
+function ValidateEmail(data,name){
+var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  
+if(data=="")
+{
+	text="Filed cannot be Empty";
+	document.getElementById(name).innerHTML = text;
+	return false;
+}
+else{ 
+if(!(data.match(mailformat)))  
+{  
+text="Enter Valid Email Id";
+	document.getElementById(name).innerHTML = text;
+	return false;
+}
+else{
+	text="";
+	document.getElementById(name).innerHTML = text;
+	return true;
+}
+}
+};
+
+
 
 </script>
 </html>

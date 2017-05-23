@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+  .main{
+ width:90%;
+  margin:auto;
+}
+		.date{
+float: right;
+margin-right: 15px;
+       padding: 0;
+}
+    .ul_header {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+       overflow: hidden;
+       background-color: white;
+
+   }
+
+   .li_header {
+       float: right;
+   }
+
+ a {
+       display: inline-block;
+       color: grey;
+       text-align: center;
+       padding: 14px 16px;
+       text-decoration: none;
+       background-color: white;
+     }
+
+
+    a:hover {
+    background-color:lightblue;
+   }
+.logo{
+	float: left;
+}
+	</style>
+</head>
+<body>
+<div class="main">
+<div class="date">
+               Today :
+                <font id="date" color="grey"></font>
+
+            </div>
+            <br>
+<div class="col1">
+<ul class="ul_header">
+  <li class="li_header"><a class="active " href="contact.html ">Contact Us</a></li>
+  <li class="li_header"><a href="join.html ">Join Us</a></li>
+  <li class="li_header"><a href="../video_prjt.html">Home</a></li>
+  <li class="li_header"><a href="about.html">About Us</a></li>
+  <a class="logo" href="../video_prjt.html"><img src="../data/logo.png" alt="your logo"></a>
+</ul>
+
+</div>
+<div id="displayProfile">
+<p id="Heading"></p>
+<p id="firstName"></p>
+<p id="lastName"></p>
+<p id="email"></p>
+<p id="age"></p>
+<p id="city"></p>
+<p id="vl"></p>
+</div>
+</div>
+</body>
+<script>
+console.log(localStorage.getItem("state"));
+if(localStorage.getItem("state")){
+	if (typeof(Storage) !== "undefined") {
+		
+		console.log(localStorage.getItem("firstName"),
+    localStorage.getItem("lastName"),
+    localStorage.getItem("email"),
+    localStorage.getItem("age"),
+    localStorage.getItem("city"),
+    localStorage.getItem("vl"));
+		document.getElementById("Heading").innerHTML="Your Details For Requested Video ";
+		document.getElementById("firstName").innerHTML="<b>First Name: </b> "+localStorage.getItem("firstName");
+		document.getElementById("lastName").innerHTML="<b>Last Name: </b> "+localStorage.getItem("lastName");
+		document.getElementById("email").innerHTML="<b>Email: </b> "+localStorage.getItem("email");
+		document.getElementById("age").innerHTML="<b>Age: </b> "+localStorage.getItem("age");
+		document.getElementById("city").innerHTML="<b>City: </b> "+localStorage.getItem("city");
+		document.getElementById("vl").innerHTML="<b>Video link: </b>"+localStorage.getItem("vl");
+   }
+}
+   
+    else
+    {
+    	document.getElementById("Heading").innerHTML=" <h1>No Request found</h1> Enter Video Details For Next Week ";
+    }
+
+var today = new Date();
+var date = new Date(today.getTime());
+var fdate=date.toDateString();
+document.getElementById("date").innerHTML = fdate;
+</script>
+</html>
