@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
-
 <head>
- <style type="text/css">
 
-.main{
- width:90%;
-  margin:auto;
+  <style type="text/css">
+
+      .main{
+           width:90%;
+           margin:auto;
 }
  .ul_header {
        list-style-type: none;
@@ -160,16 +160,21 @@ font-size:18px;
 <li><label >Email:</label></li>
 <li><input type="text" name="email" size="50" /></li>
 <p id="email" style="color:red;"></p>
+
 <li><label >City:</label>
-<select name="city">
+<select name="city" onchange='CheckCity(this.value);'>
+    <option value="Default">Pick A city</option>
     <option value="Banglore">Banglore</option>
     <option value="Hydrabad">Hydrabad</option>
     <option value="chennai">Chennai</option>
     <option value="Kolkata">Kolkata</option>
     <option value="Delhi">Delhi</option>
     <option value="Mumbai">Mumbai</option>
+    <option value="others">others</option>
 </select></li>
+<li><input type="text" name="city" id="citybox" style='display:none'/></li>
 <p id="city" style="color:red;"></p>
+
 <li><label >Age:</label></li>
 <li><input type="text" name="age" size="50" /></li>
 <p id="age" style="color:red;"></p>
@@ -177,7 +182,6 @@ font-size:18px;
  <input  type="text" name="vl" placeholder="Enter the Video link"></li>
 <p id="vl" style="color:red;"></p>
 <li><input type="submit" value="Submit"/></li>
-<p id="success" style="color:green;"></p>
 
 </ul>
 </form>
@@ -191,10 +195,26 @@ font-size:18px;
 
 
 <script>
+var cityValue="";
+var flag=false;
 var today = new Date();
 var date = new Date(today.getTime());
 var fdate=date.toDateString();
 document.getElementById("date").innerHTML = fdate;
+
+function CheckCity(val){
+flag=true;
+  console.log(val);
+  cityValue=val;
+  console.log("inside checkCityt",cityValue);
+ var element=document.getElementById('citybox');
+ if(val=='others')
+   element.style.display='block';
+ else
+   element.style.display='none';
+}
+
+
 function playPause(btn,vid){
 	var vid = document.getElementById(vid);
 	if(vid.paused){
@@ -208,12 +228,37 @@ function playPause(btn,vid){
 
 
 function validateForm() {
+    var cty="";
     var fName=document.forms["video_detail"]["firstName"].value;
     var lName=document.forms["video_detail"]["lastName"].value;
     var eml=document.forms["video_detail"]["email"].value;
-    var cty=document.forms["video_detail"]["city"].value;
     var a=document.forms["video_detail"]["age"].value;
     var link=document.forms["video_detail"]["vl"].value;
+console.log("entry flag",flag);
+    if(cityValue=="others")
+    {
+      console.log("inside if 1",cityValue);
+      cty=document.getElementById("citybox").value;
+       document.getElementById("city").innerHTML = "";
+      if(cty==""){
+
+        console.log("city name cant be empty");
+        	document.getElementById("city").innerHTML = "Enter City Name";
+
+      }
+    }
+    else if((cityValue=="Pick A city")||flag==false){
+      document.getElementById("city").innerHTML = "Pick a City";
+
+    }
+    else {
+      {
+        cty=cityValue;
+         document.getElementById("city").innerHTML = "";
+      }
+
+    }
+
 console.log(fName,lName,cty,eml,a,link);
 var fn=allLetter(fName,"firstName");
 var ln=allLetter(lName,"lastName");
@@ -231,6 +276,7 @@ else{
 	document.getElementById("vl").innerHTML = text;
 var v=true;
 }
+
 if(fn && ln && em && ag)
 {
 	if (typeof(Storage) !== "undefined") {
@@ -241,17 +287,18 @@ if(fn && ln && em && ag)
     localStorage.setItem("city", cty);
     localStorage.setItem("age", a);
     localStorage.setItem("vl", link);
-    
-} 
+
+}
 console.log("validform");
-	
+flag=false;
+return true;
  }
  else{
  	if (typeof(Storage) !== "undefined") {
 		localStorage.setItem("state", false);
 	}
  	console.log("invalidform");
- 	document.getElementById("success").innerHTML ="";
+flag=false;
  	return false;
  }
 }
@@ -261,8 +308,8 @@ console.log("validform");
 
 
 function allLetter(data,name){
-{   
-var letters = /^[A-Za-z]+$/; 
+{
+var letters = /^[A-Za-z]+$/;
 if(data=="")
 {
 
@@ -270,65 +317,65 @@ if(data=="")
 	document.getElementById(name).innerHTML = text;
 	return false;
 }
-else{ 
-if((!data.match(letters)))  
-{  
-text=" must have alphabet characters only";  
+else{
+if((!data.match(letters)))
+{
+text=" must have alphabet characters only";
  document.getElementById(name).innerHTML = text;
  return false;
-}  
+}
 else{
 
-	text="";  
+	text="";
  document.getElementById(name).innerHTML = text;
 	return true;
 }
-}  
+}
 }
 };
 
 function numeric(data,name){
-var numbers = /^[0-9]+$/;  
+var numbers = /^[0-9]+$/;
 if(data=="")
 {
 	text="Filed cannot be Empty";
 	document.getElementById(name).innerHTML = text;
 	return false;
 }
-else{ 
-if(!(data.match(numbers)))  
-{  
-text=" must have Numeric characters only";  
+else{
+if(!(data.match(numbers)))
+{
+text=" must have Numeric characters only";
  document.getElementById(name).innerHTML = text;
  return false;
-}  
+}
 else{
 	if(data<121&&data>17){
-		text="";  
+		text="";
  document.getElementById(name).innerHTML = text;
 		return true;
 
 	}
 	else{
-		text=" must be in the Range 18-120";  
+		text=" must be in the Range 18-120";
  document.getElementById(name).innerHTML = text;
-		
+
 	}
 }
 }
 };
 
 function ValidateEmail(data,name){
-var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  
+var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 if(data=="")
 {
 	text="Filed cannot be Empty";
 	document.getElementById(name).innerHTML = text;
 	return false;
 }
-else{ 
-if(!(data.match(mailformat)))  
-{  
+else{
+if(!(data.match(mailformat)))
+{
 text="Enter Valid Email Id";
 	document.getElementById(name).innerHTML = text;
 	return false;

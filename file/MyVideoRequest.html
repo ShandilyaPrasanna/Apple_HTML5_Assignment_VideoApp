@@ -2,47 +2,47 @@
 <html>
 <head>
 	<title></title>
-	<style type="text/css">
-  .main{
- width:90%;
-  margin:auto;
-}
-		.date{
-float: right;
-margin-right: 15px;
-       padding: 0;
-}
-    .ul_header {
-       list-style-type: none;
-       margin: 0;
-       padding: 0;
-       overflow: hidden;
-       background-color: white;
+	  <style type="text/css">
+       .main{
+             width:90%;
+             margin:auto;
+             }
+		  .date{
+            float: right;
+            margin-right: 15px;
+            padding: 0;
+           }
+      .ul_header {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: white;
+            }
 
-   }
+       .li_header {
+            float: right;
+            }
 
-   .li_header {
-       float: right;
-   }
-
- a {
-       display: inline-block;
-       color: grey;
-       text-align: center;
-       padding: 14px 16px;
-       text-decoration: none;
-       background-color: white;
-     }
+        a {
+            display: inline-block;
+            color: grey;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            background-color: white;
+          }
 
 
-    a:hover {
-    background-color:lightblue;
-   }
-.logo{
-	float: left;
-}
+        a:hover {
+            background-color:lightblue;
+             }
+       .logo{
+	          float: left;
+            }
 	</style>
 </head>
+
 <body>
 <div class="main">
 <div class="date">
@@ -74,9 +74,9 @@ margin-right: 15px;
 </body>
 <script>
 console.log(localStorage.getItem("state"));
-if(localStorage.getItem("state")){
+if(!(localStorage.getItem("state")=="false")){
 	if (typeof(Storage) !== "undefined") {
-		
+
 		console.log(localStorage.getItem("firstName"),
     localStorage.getItem("lastName"),
     localStorage.getItem("email"),
@@ -92,7 +92,7 @@ if(localStorage.getItem("state")){
 		document.getElementById("vl").innerHTML="<b>Video link: </b>"+localStorage.getItem("vl");
    }
 }
-   
+
     else
     {
     	document.getElementById("Heading").innerHTML=" <h1>No Request found</h1> Enter Video Details For Next Week ";
